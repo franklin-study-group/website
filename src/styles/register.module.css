@@ -24,6 +24,10 @@ overflow: hidden;
   display: grid;
   grid-column-gap: 10px;
 }
+
+.flexBox{
+  display: flex;
+}
 .flexUnit{
   flex: 1;
 }

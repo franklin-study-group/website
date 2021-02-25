@@ -18,73 +18,76 @@ const InputForm = () => {
   }
   
   return <>
-    <article className={styles.single_tutor}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.form_control}>
-          <label htmlFor="firstName">Name: </label>
-          <input 
-            type="text" 
-            id="firstName" 
-            name="firstName" 
-            value={firstName}
-            onChange={(event)=>{
-              setFirstName(event.target.value)
-              data.name = event.target.value
-            }}
-          />
-        </div>
+    <div className="flexBox">
+      <div className="flexUnit">
+        <article className={styles.single_tutor}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <div className={styles.form_control}>
+              <label htmlFor="firstName">Name: </label>
+              <input 
+                type="text" 
+                id="firstName" 
+                name="firstName" 
+                value={firstName}
+                onChange={(event)=>{
+                  setFirstName(event.target.value)
+                  data.name = event.target.value
+                }}
+              />
+            </div>
 
-        <div className={styles.form_control}>
-          <label htmlFor="email">Email: </label>
-          <input 
-            type="text" 
-            id="firstEmail" 
-            name="firstEmail" 
-            value={firstEmail}
-            onChange={(event)=>{
-              setEmail(event.target.value)
-              data.email = event.target.value
-            }} 
-          />
-        </div>
+            <div className={styles.form_control}>
+              <label htmlFor="email">Email: </label>
+              <input 
+                type="text" 
+                id="firstEmail" 
+                name="firstEmail" 
+                value={firstEmail}
+                onChange={(event)=>{
+                  setEmail(event.target.value)
+                  data.email = event.target.value
+                }} 
+              />
+            </div>
 
-        <div className={styles.form_control}>
-          <label htmlFor="bio">Bio: </label>
-          <input 
-            type="text" 
-            id="firstBio" 
-            name="firstBio" 
-            value={firstBio}
-            onChange={(event)=>{
-              setBio(event.target.value)
-              data.bio = event.target.value
-            }} 
-          />
-        </div>
+            <div className={styles.form_control}>
+              <label htmlFor="bio">Bio: </label>
+              <input 
+                type="text" 
+                id="firstBio" 
+                name="firstBio" 
+                value={firstBio}
+                onChange={(event)=>{
+                  setBio(event.target.value)
+                  data.bio = event.target.value
+                }} 
+              />
+            </div>
 
-        <div className={styles.form_control}>
-          <label htmlFor="camera">Link: </label>
-          <input 
-            type="text" 
-            id="pic" 
-            name="pic"
-            value={firstPic}
-            onChange={(event)=>{
-              setPic(event.target.value)
-              data.pic = event.target.value
-            }} 
-          />
-        </div>
+            <div className={styles.form_control}>
+              <label htmlFor="camera">Link: </label>
+              <input 
+                type="text" 
+                id="pic" 
+                name="pic"
+                value={firstPic}
+                onChange={(event)=>{
+                  setPic(event.target.value)
+                  data.pic = event.target.value
+                }} 
+              />
+            </div>
 
-        <button type="submit" onClick={handleSubmit}>add Person</button>
-      
-      </form>
+            <button type="submit" onClick={handleSubmit}>add Person</button>
+          
+          </form>
 
-      {ifCompleted && <Finished />}
-    </article>
+          {ifCompleted && <Finished />}
+        </article>
+      </div>
 
-    <Tutor {...data}/>
-
+      <Tutor {...data}/>
+    </div>
   </>
 };
 
