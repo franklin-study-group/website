@@ -3,7 +3,8 @@ var data =
     id: 0,
     name: '',
     bio: '',
-    pic: ''
+    pic: '',
+    email: ''
   };
 
 export default data

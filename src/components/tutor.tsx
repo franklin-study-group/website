@@ -8,7 +8,10 @@ const Tutor = ({id, name, pic,bio}) =>{
         </div>
         <footer className={styles.pad}>
             <div>
-                <h4 className={styles.reg_h4}>Hi I'm {name}</h4>
+                <div className={styles.contact_panel}>
+                    <h4 className={styles.reg_h4}>Hi I'm {name}</h4>
+                    {/* <Contacts /> */}
+                </div>
                 <p className={styles.reg_p}>{readMore ? bio: `${bio.substring(0,20)}...`}
                     <button onClick={()=>setReadMore(!readMore)}>
                     {readMore ? 'show less': 'read more'}

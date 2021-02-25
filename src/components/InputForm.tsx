@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import data from '../pages/RegisterPage/data'
 import Tutor from './tutor'
 import styles from '../styles/register.module.css';
+import Finished from './Finished'
 
 const InputForm = () => {
   const [firstName, setFirstName] = useState(data.name)
   const [firstBio , setBio] = useState(data.bio)
   const [firstPic , setPic] = useState(data.pic)
+  const [firstEmail, setEmail] = useState(data.email)
+  const [ifCompleted, setIfCompleted] = useState(false)
+  
   const handleSubmit = (event) =>{
     event.preventDefault()
-    console.log(data)
+    setIfCompleted(true)
+    setTimeout(()=>{ setIfCompleted(false) }, 3000);
   }
   
   return <>
@@ -30,7 +35,21 @@ const InputForm = () => {
         </div>
 
         <div className={styles.form_control}>
-          <label htmlFor="email">Bio: </label>
+          <label htmlFor="email">Email: </label>
+          <input 
+            type="text" 
+            id="firstEmail" 
+            name="firstEmail" 
+            value={firstEmail}
+            onChange={(event)=>{
+              setEmail(event.target.value)
+              data.email = event.target.value
+            }} 
+          />
+        </div>
+
+        <div className={styles.form_control}>
+          <label htmlFor="bio">Bio: </label>
           <input 
             type="text" 
             id="firstBio" 
@@ -60,6 +79,8 @@ const InputForm = () => {
         <button type="submit" onClick={handleSubmit}>add Person</button>
       
       </form>
+
+      {ifCompleted && <Finished />}
     </article>
 
     <Tutor {...data}/>
