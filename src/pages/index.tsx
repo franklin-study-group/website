@@ -1,14 +1,17 @@
+import Navbar from "components/Navbar"
 import Head from "next/head"
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div>
       <Head>
         <title>Franklin Study Group</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className=""></div>
+      <div className="">
+        <Navbar />
+      </div>
     </div>
   )
 }
