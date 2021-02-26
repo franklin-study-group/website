@@ -1,7 +1,7 @@
 import styles from "../styles/register.module.css"
-const Finished = () =>{
+const Finished = ({text}) =>{
     return <div className={styles.finished}>
-        <p>Finished</p>
+        <p>{text}</p>
     </div>
 }
 

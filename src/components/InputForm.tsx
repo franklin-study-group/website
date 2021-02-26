@@ -5,32 +5,43 @@ import styles from '../styles/register.module.css';
 import Finished from './Finished'
 
 const InputForm = () => {
-  const [firstName, setFirstName] = useState(data.name)
-  const [firstBio , setBio] = useState(data.bio)
-  const [firstPic , setPic] = useState(data.pic)
-  const [firstEmail, setEmail] = useState(data.email)
+  const [name, setName] = useState(data.name)
+  const [bio , setBio] = useState(data.bio)
+  const [pic , setPic] = useState(data.pic)
+  const [email, setEmail] = useState(data.email)
   const [ifCompleted, setIfCompleted] = useState(false)
+  const [ifError, setIfError] = useState(false)
   
   const handleSubmit = (event) =>{
     event.preventDefault()
-    setIfCompleted(true)
-    setTimeout(()=>{ setIfCompleted(false) }, 3000);
+    if (name && bio && pic && email){
+      setIfCompleted(true)
+      setTimeout(()=>{ setIfCompleted(false) }, 4000);
+      setBio('')
+      setName('')
+      setEmail('')
+      setPic('')
+    }
+    else{
+      setIfError(true)
+      setTimeout(()=>{ setIfError(false) }, 4000);
+    }
   }
   
   return <>
-    <div className="flexBox">
-      <div className="flexUnit">
+      <div>
         <article className={styles.single_tutor}>
           <form className={styles.form} onSubmit={handleSubmit}>
+            
             <div className={styles.form_control}>
               <label htmlFor="firstName">Name: </label>
               <input 
                 type="text" 
-                id="firstName" 
-                name="firstName" 
-                value={firstName}
+                id="name" 
+                name="name" 
+                value={name}
                 onChange={(event)=>{
-                  setFirstName(event.target.value)
+                  setName(event.target.value)
                   data.name = event.target.value
                 }}
               />
@@ -40,9 +51,9 @@ const InputForm = () => {
               <label htmlFor="email">Email: </label>
               <input 
                 type="text" 
-                id="firstEmail" 
-                name="firstEmail" 
-                value={firstEmail}
+                id="email" 
+                name="email" 
+                value={email}
                 onChange={(event)=>{
                   setEmail(event.target.value)
                   data.email = event.target.value
@@ -54,9 +65,9 @@ const InputForm = () => {
               <label htmlFor="bio">Bio: </label>
               <input 
                 type="text" 
-                id="firstBio" 
-                name="firstBio" 
-                value={firstBio}
+                id="bio" 
+                name="bio" 
+                value={bio}
                 onChange={(event)=>{
                   setBio(event.target.value)
                   data.bio = event.target.value
@@ -70,7 +81,7 @@ const InputForm = () => {
                 type="text" 
                 id="pic" 
                 name="pic"
-                value={firstPic}
+                value={pic}
                 onChange={(event)=>{
                   setPic(event.target.value)
                   data.pic = event.target.value
@@ -82,12 +93,12 @@ const InputForm = () => {
           
           </form>
 
-          {ifCompleted && <Finished />}
+          {ifCompleted && <Finished text='Finished!'/>}
+          {ifError && <Finished text='All Fields must be Completed'/>}
         </article>
       </div>
 
       <Tutor {...data}/>
-    </div>
   </>
 };
 

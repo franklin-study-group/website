@@ -8,8 +8,8 @@ import Link from "next/link" */
 
 export default function Home() {
   return (
-    <html style={{background: "hsl(209, 61%, 16%)"}}>
+    <main className={styles.reg_main}>
       <App />
-    </html>
+    </main>
   )
 }
