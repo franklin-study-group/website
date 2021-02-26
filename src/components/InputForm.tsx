@@ -1,36 +1,39 @@
 import React, { useState } from 'react';
-import data from '../pages/RegisterPage/data'
 import Tutor from './tutor'
 import styles from '../styles/register.module.css';
 import Finished from './Finished'
-/* import { data } from 'autoprefixer'; */
 
 const InputForm = () => {
-  const [name, setName] = useState('')
-  const [bio , setBio] = useState('')
-  const [pic , setPic] = useState('')
-  const [email, setEmail] = useState('')
   const [ifCompleted, setIfCompleted] = useState(false)
   const [ifError, setIfError] = useState(false)
+  var [person, setPerson] = useState({id:1, name: '', bio: '', pic: '', email: ''})
 
   const handleSubmit = (event) =>{
     event.preventDefault()
-    if (name && bio && pic && email){
+
+    var check = true
+    Object.keys(person).forEach(function (k){
+      if (!person[k]) {
+          check = false
+      }
+    })
+
+    if (check){
+      console.log(person)
       setIfCompleted(true)
       setTimeout(()=>{ setIfCompleted(false) }, 4000);
-      setBio('')
-      setName('')
-      setEmail('')
-      setPic('')
-      data.bio = '';
-      data.name = '';
-      data.email = '';
-      data.pic = '';
+      setPerson({id:1, name: '', bio: '', pic: '', email: ''})
     }
     else{
       setIfError(true)
       setTimeout(()=>{ setIfError(false) }, 4000);
     }
+  }
+
+  const handleChange = (event) =>{
+    const name = event.target.name
+    const value = event.target.value
+    setPerson({...person, [name]: value})
   }
   
   return <>
@@ -44,11 +47,8 @@ const InputForm = () => {
                 type="text" 
                 id="name" 
                 name="name" 
-                value={name}
-                onChange={(event)=>{
-                  setName(event.target.value)
-                  data.name = event.target.value
-                }}
+                value={person.name}
+                onChange={handleChange}
               />
             </div>
 
@@ -58,11 +58,8 @@ const InputForm = () => {
                 type="text" 
                 id="email" 
                 name="email" 
-                value={email}
-                onChange={(event)=>{
-                  setEmail(event.target.value)
-                  data.email = event.target.value
-                }} 
+                value={person.email}
+                onChange={handleChange} 
               />
             </div>
 
@@ -72,11 +69,8 @@ const InputForm = () => {
                 type="text" 
                 id="bio" 
                 name="bio" 
-                value={bio}
-                onChange={(event)=>{
-                  setBio(event.target.value)
-                  data.bio = event.target.value
-                }} 
+                value={person.bio}
+                onChange={handleChange}
               />
             </div>
 
@@ -86,11 +80,8 @@ const InputForm = () => {
                 type="text" 
                 id="pic" 
                 name="pic"
-                value={pic}
-                onChange={(event)=>{
-                  setPic(event.target.value)
-                  data.pic = event.target.value
-                }} 
+                value={person.pic}
+                onChange={handleChange}
               />
             </div>
 
@@ -103,7 +94,7 @@ const InputForm = () => {
         </article>
       </div>
 
-      <Tutor {...data}/>
+      <Tutor key={person.id} {...person}/>
   </>
 };
 
