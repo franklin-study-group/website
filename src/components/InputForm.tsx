@@ -3,15 +3,16 @@ import data from '../pages/RegisterPage/data'
 import Tutor from './tutor'
 import styles from '../styles/register.module.css';
 import Finished from './Finished'
+/* import { data } from 'autoprefixer'; */
 
 const InputForm = () => {
-  const [name, setName] = useState(data.name)
-  const [bio , setBio] = useState(data.bio)
-  const [pic , setPic] = useState(data.pic)
-  const [email, setEmail] = useState(data.email)
+  const [name, setName] = useState('')
+  const [bio , setBio] = useState('')
+  const [pic , setPic] = useState('')
+  const [email, setEmail] = useState('')
   const [ifCompleted, setIfCompleted] = useState(false)
   const [ifError, setIfError] = useState(false)
-  
+
   const handleSubmit = (event) =>{
     event.preventDefault()
     if (name && bio && pic && email){
@@ -21,6 +22,10 @@ const InputForm = () => {
       setName('')
       setEmail('')
       setPic('')
+      data.bio = '';
+      data.name = '';
+      data.email = '';
+      data.pic = '';
     }
     else{
       setIfError(true)
