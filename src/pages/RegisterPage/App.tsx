@@ -1,13 +1,16 @@
 import React from 'react'
 import InputForm from '../../components/InputForm'
 import NavBar from '../../components/Navbar'
+import styles from '../../styles/register.module.css'
 
 function App() {
   return (
-    <div>
+    <>
       <NavBar />
-      <InputForm />
-    </div>
+      <div className={styles.reg_main}>
+        <InputForm />
+      </div>
+    </>
   )
 }
 

@@ -1,3 +1,11 @@
+.container_fluid{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+
 .navbar {
     background: rgba(0,0,0,0);
     -webkit-transition: background-color 200ms linear;
@@ -9,12 +17,10 @@
     top: 0px;
     right: 0px;
 }
+
 .navbar_fixed_top {
     border-width: 0 !important;
 }
-/* .navbar img {
-    padding-top: 15px;
-} */
 
 .scrolled {
     background-color: rgba(70,75,79,1);
@@ -27,26 +33,33 @@
 .navbar_nav {
     list-style: none;
     font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.navbar_nav:hover{
+    text-decoration: overline;
+    text-decoration-color: #8842d5;
+    text-underline-position: over;
+    transition-property: width;
 }
 
 @media(min-width: 768px) {
     .navbar_nav {
-        margin: 7.5px 15px !important;
+        margin: 7.5px 15px;
     }
 
     .navbar_right {
-        margin-right: -15px !important;
+        margin-right: -15px;
     }
 
-    .navbar-expand-lg .navbar-nav .nav-link {
+    .navbar-nav {
         padding: 16px;
     }
 
 }
 
-.icon_bar{
-    background-color: #ba95e6;
-}
+
 
 /*Ankur: adding custom animations for icon bar mobile*/
 .navbar_toggle > span:first-child{
@@ -71,14 +84,11 @@
     margin-bottom: 5px;
 }
 
-.navbar_header_span {
+.navbar_toggle {
     transition: all 300ms ease-in-out;
     transform-origin: 3px 1px;
 }
 
-/*Ankur: End of custom animations*/
-
-/* Sharon: Change CSS for navbar when toggled */
 .nav_toggled {
     background-color: rgba(70,75,79,1);
     -webkit-transition: background-color 200ms linear;
@@ -88,19 +98,18 @@
 }
 
 @media(max-width: 767px) {
-    .navbar_collapse {
+    .navbar_toogle_collapse {
         border-top: 0 !important;
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        padding-right: 0 !important;
-        padding-left: 0 !important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        padding-right: 0;
+        padding-left: 0;
     }
 
     .ul_navbar_nav {
         padding-left: 0;
         margin: 0;
-        /* padding-right: 15px;
-        padding-left: 15px; */
+        align-items: center;
     }
     .ul_navbar_nav {
         display: block;
