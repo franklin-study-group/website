@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/register.module.css';
+
 const Tutor = ({id, name, pic,bio}) =>{
     const [readMore, setReadMore] = React.useState(false)
         return <div className="flexUnit"> 

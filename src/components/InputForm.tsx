@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Tutor from './tutor'
 import styles from '../styles/register.module.css';
 import Finished from './Finished'
@@ -6,7 +6,22 @@ import Finished from './Finished'
 const InputForm = () => {
   const [ifCompleted, setIfCompleted] = useState(false)
   const [ifError, setIfError] = useState(false)
-  var [person, setPerson] = useState({id:1, name: '', bio: '', pic: '', email: ''})
+  const [person, setPerson] = useState({id:1, name: '', bio: '', pic: '', email: ''})
+  const [selectedFile, setSelectedFile] = useState<File>()
+  
+  useEffect(()=>{
+    if (selectedFile){
+      const reader = new FileReader()
+      reader.onloadend = () =>{
+        var preview = reader.result as string
+        setPerson({...person, pic: preview})
+      }
+      reader.readAsDataURL(selectedFile)
+    }
+    else{
+      person.pic = null
+    }
+  }, [selectedFile])
 
   const handleSubmit = (event) =>{
     event.preventDefault()
@@ -82,6 +97,23 @@ const InputForm = () => {
                 name="pic"
                 value={person.pic}
                 onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.form_control}>
+              <label htmlFor="image_uploads">Image: </label>
+              <input 
+                type="file"
+                accept="image/*" 
+                onChange={(event)=>{
+                  var file = event.target.files[0]
+                  if (file && file.type.substring(0,5) === 'image'){
+                    setSelectedFile(file)
+                  }
+                  else{
+                    setSelectedFile(null)
+                  }
+                }}
               />
             </div>
 

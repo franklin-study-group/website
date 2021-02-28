@@ -1,14 +1,10 @@
 import Navbar from "components/Navbar"
-import Head from "next/head"
+import TabTitle from '../components/TabTitle'
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>Franklin Study Group</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <TabTitle title ='Franklin Study Group'/>
       <div>
         <Navbar />
       </div>
