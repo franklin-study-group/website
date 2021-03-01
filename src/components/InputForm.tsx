@@ -90,17 +90,6 @@ const InputForm = () => {
             </div>
 
             <div className={styles.form_control}>
-              <label htmlFor="camera">Link: </label>
-              <input 
-                type="text" 
-                id="pic" 
-                name="pic"
-                value={person.pic}
-                onChange={handleChange}
-              />
-            </div>
-
-            <div className={styles.form_control}>
               <label htmlFor="image_uploads">Image: </label>
               <input 
                 type="file"
