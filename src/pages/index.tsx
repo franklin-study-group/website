@@ -5,11 +5,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Franklin Study Group</title>
+        <title>Study Buddies</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className="">
+        <h1> Study Buddies</h1>
         <Navbar />
       </div>
     </div>
